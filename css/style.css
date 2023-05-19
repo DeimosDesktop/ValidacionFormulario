@@ -1,0 +1,17 @@
+@charset "utf-8";
+.bordes {
+	border-color:blue;
+	border-radius:5px;
+}
+
+.fondos {
+	background-color:blue;
+	color:white;
+}
+select:hover { background-color: yellow; }
+
+.titulo:before{
+	font-weight:700;
+	color:blue;
+	content:"Registrate en pizzeria Mirpas";
+}
