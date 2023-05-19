@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta author="Mirpas.com- Pascual Gómez del Pino. Todos los derechos reservados.">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pizzeria Mirpas</title>
+<!-- Bootstrap -->
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/style.css">
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	
+</head>
+<body>
+<!-- HEADER -->
+<header>
+  <div class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-offset-3 col-xs-12 col-lg-6">
+          <h1 class="text-center">Contacto.</h1>
+			<h2 class="titulo"></h2><!--<form role="form" id="form1" class="text-center" action="resultado.php" onsubmit="return enviaForm()" method="POST">-->
+             <form id="form1">
+              <div class="form-group"><!--NOMBRE-->
+                <label for="name">Nombre</label>
+                <input type="text" class="form-control bordes" id="name" name="name" onblur="Lost_focus(this); nonumero()" placeholder="Nombre" pattern="[A-Za-z]{3,20}">
+                <span  id="help_name" class="help-block" style="display: none;">Por favor, introduce tu nombre sin números.</span></div>
+				
+				<div class="form-group"><!--APELLIDOS-->
+                <label for="apellidos">Apellidos</label>
+                <input type="text" class="form-control bordes" id="surname" name="surname" placeholder="Apellidos" onblur="Lost_focus(this); nonumero()" pattern="[A-Za-z]{3,20}">
+                <span id="help_apellidos" class="help-block" style="display: none;">Por favor, introduce tus Apellidos sin números.</span></div>
+				
+              <div class="form-group">
+				  <div class="form-group"><!--EDAD-->
+                <label for="edad">Edad</label>
+                <input type="number" class="form-control bordes" id="edad" name="edad" placeholder="Edad" min="0" max="105" pattern="^[0-9]+" onblur="lulu()">
+                <span class="help-block" id="help_edad" style="display: none;">Por favor, selecciona la edad correcta.</span></div>
+				  
+				<div class="form-group"><!--NIF-->
+                <label for="nif">NIF</label>
+                <input type="text" class="form-control bordes" id="nif" name="nif" placeholder="DNI" max="9" pattern="[0-9]{8}-[A-Za-z]{1}" onblur="NIF()">
+                <span class="help-block" id="help_dni" style="display: none;">El contenido del DNI no es válido, introduce un DNI válido.</span></div>
+				  
+                <label for="email">E-Mail</label><!--EMAIL-->
+                <input type="email" class="form-control bordes" id="email" name="email" placeholder="Dirección de Email válida" onblur="mail()">
+                <span class="help-block" id="help_email" style="display: none;">Introduce una dirección de Email válida.</span></div>
+				
+				<div class="form-group"><!--PROVINCIA-->
+                <label for="provincia">Provincia</label>
+                <select class="form-control bordes" id="provincia" name="provincia" placeholder="Provincia">
+                  <option  value="Madrid">Madrid</option>
+                  <option  value="Barcelona">Barcelona</option>
+                  <option  value="Sevilla">Sevilla</option>
+                  <option  value="Zaragoza">Zaragoza</option>
+                  <option  value="Bilbao">Bilbao</option>
+                  <option  value="Valencia">Valencia</option>
+                  <option  value="Granada">Granada</option>
+                  <option  value="Lleida">Lleida</option>
+                </select>
+                <span class="help-block" style="display: none;">Por favor, introduce tu Provincia.</span></div>
+                
+              <span class="help-block" style="display: none;">Por favor, escribe un código de seguridad.</span>
+              
+            </form>
+            <button class="btn btn-primary" onclick="presentar()">Enviar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- / HEADER --> 
+
+
+<!-- FOOTER -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="jumbotron">
+        <div class="row text-center">
+          <div class="text-center col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h2>GRACIAS POR CONTACTAR CONMIGO.</h2>
+          </div>
+			<div id="datos"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <p>Copyright &copy; pizzeria Mirpas 2023. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </div>
+	
+</footer>
+<!-- / FOOTER --> 
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script src="js/jquery-1.11.3.min.js"></script> 
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<script src="js/bootstrap.js"></script>
+<script src="js/mirpas.js"></script>	
+<script>
+    function presentar(){
+        let nombre = document.getElementById('name').value;
+        let apellidos = document.getElementById('surname').value;
+        let nif = document.getElementById('nif').value;
+        let correo = document.getElementById('email').value;
+        let provincia = document.getElementById('provincia').value;
+        let anio = document.getElementById('edad').value;
+        let datos1 = document.getElementById('datos');
+        datos1.innerHTML ='<div class="text-center col-lg-12">';
+        datos1.innerHTML +='<h4 class="text-center">DATOS DEL USUARIO</h4>';
+        datos1.innerHTML += '<p>Nombre: <span class="badge text-bg-secondary">'+nombre + '</span></p>';
+        datos1.innerHTML +='<p>Apellidos: <span class="badge text-bg-secondary">' + apellidos + '</span></p>';
+        datos1.innerHTML +='<p>Email: <span class="badge text-bg-secondary">' + correo + '</span></p>';
+        datos1.innerHTML +='<p>DNI: <span class="badge text-bg-secondary">' + nif + '</span></p>';
+        datos1.innerHTML +='</div>';
+
+    }
+</script>
+</body>
+</html>
+
